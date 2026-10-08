@@ -127,7 +127,9 @@ Você precisa ter instalado:
 
 ### Jeito fácil (Android Studio)
 1. Abra o Android Studio → `File > Open` → escolha a pasta `usd-to-real`.
-2. Aperte o botão verde **Run ▶** e escolha um celular emulador.
+2. Conecte o celular físico pelo cabo USB (com "Depuração USB" ligada) e aperte o
+   botão verde **Run ▶** escolhendo o aparelho físico. Não usamos emulador — o teste
+   é sempre feito no celular de verdade.
 
 ### Jeito do terminal
 ```bash
@@ -212,7 +214,8 @@ O cérebro (ViewModel) nunca trava a tela: se a internet demorar, ele mostra
 ## 9. Teste rápido depois de qualquer mudança
 
 1. `./gradlew assembleDebug`
-2. Instale no emulador/celular.
+2. Instale no celular físico: `adb install -r app/build/outputs/apk/debug/app-debug.apk`
+   (se aparecer erro de assinatura, rode antes `adb uninstall com.cambio.converter`).
 3. Confira as 6 conversões digitando valores diferentes.
 4. Toque **dentro** do campo → o teclado abre.
 5. Toque **fora** do campo → o teclado fecha sozinho.

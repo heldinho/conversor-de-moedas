@@ -1,7 +1,9 @@
 package com.cambio.converter.data
 
 import android.content.Context
+import androidx.compose.runtime.Immutable
 import androidx.core.content.edit
+import com.cambio.converter.ui.MoneyFormat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CancellationException
@@ -16,13 +18,24 @@ import java.io.IOException
 
 /**
  * Book de cotações sempre normalizado para base USD.
+ *
+ * `@Immutable` avisa o Compose que nunca alteramos esta instância depois de
+ * criada — assim as subtelas que recebem o book conseguem pular recomposições.
  */
+@Immutable
 data class RateBook(
     val rates: Map<Currency, Double>,
     val date: String,
     val source: String,
     val fetchedAt: Long
 ) {
+    /**
+     * Rótulos prontos, calculados na thread que cria o book (IO/Default):
+     * a composição só lê a String e não gasta tempo formatando data/hora.
+     */
+    val dateLabel: String = MoneyFormat.isoDate(date)
+    val updatedLabel: String = MoneyFormat.clock(fetchedAt)
+
     fun rate(from: Currency, to: Currency): Double? {
         val origin = rates[from] ?: return null
         val target = rates[to] ?: return null

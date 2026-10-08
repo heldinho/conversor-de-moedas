@@ -21,9 +21,18 @@ android {
         applicationId = "com.cambio.converter"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 3
+        versionName = "1.2.0"
         vectorDrawables.useSupportLibrary = true
+
+        // Só ARM: o x86/x86_64 só serve para emulador (não usamos) e pesa no APK.
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
+        }
+
+        // O resources.arsc vinha com ~50 idiomas de bibliotecas AndroidX que o
+        // app nunca mostra. Fica só inglês e português.
+        resourceConfigurations += listOf("en", "pt")
     }
 
     signingConfigs {
@@ -64,6 +73,16 @@ android {
 
     packaging {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        // Lixo que só serve à ferramenta de build / reflexão Kotlin (não usamos).
+        resources.excludes += setOf(
+            "/META-INF/*.version",
+            "kotlin-tooling-metadata.json",
+            "kotlin/**/*.kotlin_builtins",
+            "kotlin/*.kotlin_builtins",
+            "DebugProbesKt.bin",
+            // Lista de domínios do OkHttp: só importa para cookies de navegador.
+            "okhttp3/internal/publicsuffix/**"
+        )
     }
 }
 
@@ -76,7 +95,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
 
     implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material3:material3")
     implementation("com.composables:icons-lucide:1.1.0")
@@ -84,6 +102,4 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
-
-    debugImplementation("androidx.compose.ui:ui-tooling")
 }

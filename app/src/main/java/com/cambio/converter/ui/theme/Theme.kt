@@ -20,29 +20,59 @@ object Palette {
     val NavyElevated = Color(0xFF141B34)
     val Mint = Color(0xFF4AE3A0)
     val MintDeep = Color(0xFF17B37A)
+    val Cyan = Color(0xFF5FE3FF)
     val Violet = Color(0xFF7C6CFF)
     val Amber = Color(0xFFFFC46B)
     val TextPrimary = Color(0xFFF3F6FF)
     val TextSecondary = Color(0xFF96A0C4)
+    val OnAccent = Color(0xFF04231A)
     val Hairline = Color(0x22FFFFFF)
-
-    val CardBrush: Brush
-        get() = Brush.linearGradient(
-            colors = listOf(Color.White.copy(alpha = 0.10f), Color.White.copy(alpha = 0.035f))
-        )
-
-    val CardBorder: Brush
-        get() = Brush.linearGradient(
-            colors = listOf(Color.White.copy(alpha = 0.16f), Color.White.copy(alpha = 0.04f))
-        )
-
-    val AccentBrush: Brush
-        get() = Brush.linearGradient(colors = listOf(Mint, MintDeep))
 
     val ScreenBrush: Brush
         get() = Brush.verticalGradient(
             colors = listOf(Navy, NavyDeep, Color(0xFF0A0F1F))
         )
+
+    val CardBrush: Brush
+        get() = Brush.linearGradient(
+            colors = listOf(
+                Color.White.copy(alpha = 0.12f),
+                Color.White.copy(alpha = 0.045f),
+                Color.White.copy(alpha = 0.085f)
+            )
+        )
+
+    val SurfaceBrush: Brush
+        get() = Brush.linearGradient(
+            colors = listOf(Color.White.copy(alpha = 0.075f), Color.White.copy(alpha = 0.028f))
+        )
+
+    val AccentBrush: Brush
+        get() = Brush.linearGradient(colors = listOf(Cyan, Mint, MintDeep))
+
+    val MintLabelBrush: Brush
+        get() = Brush.horizontalGradient(colors = listOf(Mint, Cyan, Mint))
+
+    val HairlineBrush: Brush
+        get() = Brush.horizontalGradient(
+            colors = listOf(Color.Transparent, Color.White.copy(alpha = 0.24f), Color.Transparent)
+        )
+
+    val TopEdgeBrush: Brush
+        get() = Brush.horizontalGradient(
+            colors = listOf(Color.Transparent, Color.White.copy(alpha = 0.40f), Color.Transparent)
+        )
+
+    val StaticBorderBrush: Brush
+        get() = Brush.linearGradient(
+            colors = listOf(
+                Color.White.copy(alpha = 0.18f),
+                Color.White.copy(alpha = 0.06f),
+                Color.White.copy(alpha = 0.14f)
+            )
+        )
+
+    val GradientColors = listOf(Mint, Cyan, Violet)
 
     val LabelSmall: TextStyle
         get() = TextStyle(
