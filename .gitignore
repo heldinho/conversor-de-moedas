@@ -1,0 +1,29 @@
+# ===== Gradle =====
+.gradle/
+build/
+.kotlin/
+
+# ===== Android Studio / IntelliJ =====
+.idea/
+*.iml
+captures/
+.externalNativeBuild
+.cxx/
+
+# ===== Config só do seu computador =====
+local.properties
+
+# ===== Segredos: NUNCA subir para o Git =====
+keystore.properties
+keystore/
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# ===== Sistema =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log

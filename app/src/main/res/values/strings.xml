@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Câmbio</string>
+    <string name="tagline">USD · EUR · BRL</string>
+    <string name="title_convert_from">DE</string>
+    <string name="title_convert_to">PARA</string>
+    <string name="swap">Inverter moedas</string>
+    <string name="refresh">Atualizar cotações</string>
+    <string name="amount_hint">Valor para converter</string>
+    <string name="rate_label">Cotação</string>
+    <string name="quick_values">Valores rápidos</string>
+</resources>
