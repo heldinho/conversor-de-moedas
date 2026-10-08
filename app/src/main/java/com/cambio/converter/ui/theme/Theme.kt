@@ -72,7 +72,15 @@ object Palette {
             )
         )
 
-    val GradientColors = listOf(Mint, Cyan, Violet)
+    /** Borda mais marcada, para o estado de carregamento (sem animação). */
+    val StaticBorderBright: Brush
+        get() = Brush.linearGradient(
+            colors = listOf(
+                Mint.copy(alpha = 0.55f),
+                Color.White.copy(alpha = 0.20f),
+                Cyan.copy(alpha = 0.45f)
+            )
+        )
 
     val LabelSmall: TextStyle
         get() = TextStyle(
